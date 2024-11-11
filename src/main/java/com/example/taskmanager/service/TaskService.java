@@ -23,21 +23,15 @@ public class TaskService {
 	}
 
 	public List<TaskDto> getAll() {
-		final List<Task> tasks = taskRepository.findAllByOrderByIdAsc();
+		final List<Task> tasks = taskRepository.findAllByOrderByIdDesc();
 		return tasks.stream().map(TaskDto::new).collect(Collectors.toList());
 	}
 	
 	@Transactional
     public Task create(TaskDto transferObject) {
-        Task task = new Task();
-        
-        task.setName(transferObject.getName());
-        task.setDone(transferObject.getDone());
+        Task task = new Task(transferObject);
         task.setCreated(Instant.now());
-        task.setPriority(transferObject.getPriority());
-        
         task = taskRepository.save(task);
-        
         return task;
     }
 	
