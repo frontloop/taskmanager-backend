@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>taskmanager</artifactId>
-	<version>spring-boot-docker-0.1.0</version>
+	<artifactId>taskmanager-backend</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>taskmanager</name>
 	<description>Task Manager project for Spring Boot</description>
 	<url/>
