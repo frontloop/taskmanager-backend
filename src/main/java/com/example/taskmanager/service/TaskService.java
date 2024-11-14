@@ -41,7 +41,6 @@ public class TaskService {
 
         task.setName(transferObject.getName());
         task.setDone(transferObject.getDone());
-        task.setPriority(transferObject.getPriority());
         
         task = taskRepository.save(task);
         
