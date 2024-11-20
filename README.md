@@ -1,6 +1,10 @@
 ## Build app
 
 ```sh
+mvn clean install
+```
+
+```sh
 mvn package
 ```
 
