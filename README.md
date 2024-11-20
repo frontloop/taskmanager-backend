@@ -1,5 +1,9 @@
-## Create docker image
+## Project setup
 
 ```sh
-docker build -t taskmanager_backend .
+mvn clean install
+```
+
+```sh
+mvn spring-boot:run
 ```
