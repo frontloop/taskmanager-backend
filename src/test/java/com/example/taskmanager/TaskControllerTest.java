@@ -24,7 +24,6 @@ import com.example.taskmanager.service.TaskService;
 import com.example.taskmanager.types.Priority;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.time.Instant;
 
