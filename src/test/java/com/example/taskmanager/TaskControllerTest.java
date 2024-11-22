@@ -6,8 +6,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.http.MediaType;
 
@@ -37,12 +35,15 @@ class TaskControllerTest {
 
 	@MockBean
 	private TaskService service;
+	
+	private ObjectMapper mapper = new ObjectMapper();
+	
+	TaskControllerTest() {
+		mapper.registerModule(new JavaTimeModule());
+	}
 
 	@Test
 	void createShouldReturnTaskFromService() throws Exception {
-		
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.registerModule(new JavaTimeModule());
 		
 		Task task = new Task();
 		task.setId(0L);
@@ -54,10 +55,6 @@ class TaskControllerTest {
 		TaskDto dto = new TaskDto(task);
 		
 		when(service.create(any(TaskDto.class))).thenReturn(new Task(dto));
-		this.mockMvc.perform(post("/api/task/create", dto)
-				.content(mapper.writeValueAsString(dto)).contentType(MediaType.APPLICATION_JSON))
-				.andDo(print()).andExpect(status().isOk())
-				.andReturn();
 		
 		MvcResult result = mockMvc
 				.perform(MockMvcRequestBuilders.post("/api/task/create")
